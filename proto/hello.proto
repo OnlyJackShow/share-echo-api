@@ -1,0 +1,16 @@
+syntax = "proto3";
+package proto;
+
+//数据中心渠道商品模块服务
+service HelloService {
+    //根据sku_id查找product_id（批量）
+    rpc HelloWorld (HelloWorldRequest) returns (HelloWorldResponse);
+}
+
+message HelloWorldRequest {
+    repeated int32 sku_id = 1;
+}
+
+message HelloWorldResponse {
+    map<int32,int32> data = 1;
+}

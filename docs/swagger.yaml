@@ -1,0 +1,56 @@
+definitions:
+  main.BaseResponse:
+    properties:
+      code:
+        type: integer
+      error:
+        type: string
+      message:
+        type: string
+    type: object
+info:
+  contact: {}
+  license: {}
+paths:
+  /product-api/product/search:
+    get:
+      consumes:
+      - text/plain
+      parameters:
+      - description: 渠道id
+        in: query
+        name: channel_id
+        required: true
+        type: integer
+      - description: 门店编码
+        in: query
+        name: finance_code
+        required: true
+        type: string
+      - description: 搜索关键词
+        in: query
+        name: keywords
+        type: string
+      - description: 分页索引
+        in: query
+        name: page_index
+        type: integer
+      - description: 分页大小
+        in: query
+        name: page_size
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.BaseResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/main.BaseResponse'
+      summary: 门店内商品搜索
+      tags:
+      - 商品相关
+swagger: "2.0"
